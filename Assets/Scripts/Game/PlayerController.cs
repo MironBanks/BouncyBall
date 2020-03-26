@@ -12,21 +12,21 @@ public class PlayerController : MonoBehaviour
     private float m_DownwardVelocity;
 
 
-    #region Unity Function
-    private void Start()
+
+
+    #region Public Function
+
+    public void OnInit()
     {
         m_TargetPosition = transform.position;
     }
 
-    private void Update()
+    public void OnUpdate()
     {
         Jump();
         Fall();
         Move();
     }
-    #endregion
-
-    #region Public Function
 
     #endregion
 

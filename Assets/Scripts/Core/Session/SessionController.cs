@@ -13,7 +13,7 @@ namespace UnityCore
 
             private long m_SessionStartTime;
             private bool m_IsPaused;
-            //private GameController m_Game;
+            private GameController m_Game;
             private float m_FPS;
 
             public long sessionStartTime
@@ -55,17 +55,18 @@ namespace UnityCore
             private void Update()
             {
                 if (m_IsPaused) return;
-                //m_Game.OnUpdate();
+                if (!m_Game) return;
+                m_Game.OnUpdate();
                 m_FPS = Time.frameCount / Time.time;
             }
             #endregion
 
             #region Public Functions
-            /*public void InitializeGame(GameController _game)
+            public void InitializeGame(GameController _game)
             {
-                //m_Game = _game;
-                //m_Game.OnInit();
-            }*/
+                m_Game = _game;
+                m_Game.OnInit();
+            }
 
             public void UnPause()
             {
