@@ -31,7 +31,11 @@ public class ObstacleController : MonoBehaviour
         if (obstacles.Length == 0)
         {
             Debug.LogWarning("Trying to get a random obstacle, but no obstacles were found.");
+            return null;
         }
+
+        int _random = GetRandomObstacle.Range(0, obstacles.Length);
+        return obstacles[_random];
     }
     #endregion
 }
