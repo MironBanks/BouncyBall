@@ -6,7 +6,10 @@ public class GameController : MonoBehaviour
 {
     public PlayerController player;
     public CameraController camera;
+    public ObstacleController obstacles;
+
     private SessionController m_Session;
+    private int m_Progress;
 
     private SessionController session
     {
@@ -40,6 +43,7 @@ public class GameController : MonoBehaviour
     {
         player.OnInit();
         camera.OnInit();
+        obstacles.AddObstacle(m_Progress);
     }
 
     public void OnUpdate()
