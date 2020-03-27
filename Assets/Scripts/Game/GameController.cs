@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public ObstacleController obstacles;
 
     private SessionController m_Session;
-    private int m_Progress;
+    private int m_Progress = -1;
 
     private SessionController session
     {
