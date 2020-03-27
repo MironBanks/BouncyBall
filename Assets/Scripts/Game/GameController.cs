@@ -50,13 +50,21 @@ public class GameController : MonoBehaviour
     {
         player.OnUpdate();
         camera.OnUpdate();
+        CheckPlayerProgress();
     }
 
     #endregion
 
     #region Private Function
 
-
+    private void CheckPlayerProgress()
+    {
+        if (player.transform.position.y / obstacles.interval > (m_Progress + 1))
+        {
+            m_Progress++;
+            obstacles.AddObstacle(m_Progress);
+        }
+    }
 
 
     #endregion
