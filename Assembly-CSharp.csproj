@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Core\Tween\Vector3Tween.cs" />
      <Compile Include="Assets\Scripts\Game\CameraController.cs" />
      <Compile Include="Assets\Scripts\Game\GameController.cs" />
+     <Compile Include="Assets\Scripts\Game\ObstacleController.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
