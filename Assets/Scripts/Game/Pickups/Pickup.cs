@@ -40,7 +40,7 @@ public class Pickup : MonoBehaviour
     #region Override Function
     protected virtual void OnPlayerCollect()
     {
-        Debug.Log("Player picket up [" + gameObject.name"].");
+        Debug.Log("Player picket up [" + gameObject.name + "].");
     }
     #endregion
 }

@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class ScorePickup : MonoBehaviour
+public class ScorePickup : Pickup
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public float duration;
+    public int multiplier;
+
+
+    #region Override Function
+    protected override void OnPlayerCollect()
     {
-        
+        base.OnPlayerCollect();
+        game.HandleScorePickup(multiplier, duration);
     }
+    #endregion
 }

@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class InvincibilityPickup : MonoBehaviour
+public class InvincibilityPickup : Pickup
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public float duration;
+
+
+    #region Override Function
+    protected override void OnPlayerCollect()
     {
-        
+        base.OnPlayerCollect();
+        game.HandleInvincibilityPickup(duration);
     }
+    #endregion
 }

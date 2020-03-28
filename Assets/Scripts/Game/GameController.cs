@@ -4,12 +4,19 @@ using UnityCore.Session;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
     public PlayerController player;
     public CameraController camera;
     public ObstacleController obstacles;
+    public int pickupDropRate = 3;
 
     private SessionController m_Session;
     private int m_Progress = -1;
+    private int m_ScoreMultiplier = 1;
+    private bool m_Invincible;
+    private bool m_DidDropPickup;
+    private float m_ScoreMultiplierDuration;
+    private float m_InvincibilityDuration;
 
     private SessionController session
     {
@@ -28,6 +35,14 @@ public class GameController : MonoBehaviour
     }
 
     #region Unity Function
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -53,6 +68,24 @@ public class GameController : MonoBehaviour
         CheckPlayerProgress();
     }
 
+    public void HandleInvincibilityPickup(float _duration)
+    {
+        m_InvincibilityDuration = _duration;
+        m_Invincible = true;
+
+        m_ScoreMultiplier = 1;
+        m_ScoreMultiplierDuration = 0;
+    }
+
+    public void HandleScorePickup(int _multiplier, float _duration)
+    {
+        m_ScoreMultiplier = _multiplier;
+        m_ScoreMultiplierDuration = _duration;
+
+        m_Invincible = false;
+        m_InvincibilityDuration = 0;
+    }
+
     #endregion
 
     #region Private Function
@@ -63,6 +96,19 @@ public class GameController : MonoBehaviour
         {
             m_Progress++;
             obstacles.AddObstacle(m_Progress);
+        }
+
+        if (m_Progress > 0 && m_Progress % pickupDropRate == 0)
+        {
+            if (!m_DidDropPickup)
+            {
+                m_DidDropPickup = true;
+                obstacles.AddPickup(m_Progress);
+            }
+        }
+        else
+        {
+            m_DidDropPickup = false;
         }
     }
 
